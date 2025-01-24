@@ -23,9 +23,9 @@
     },
     "dependencies": {
         "@primevue/themes": "^4.2.5",
+        "chart.js": "3.3.2",
         "primeicons": "^7.0.0",
         "primevue": "^4.2.5",
-        "tailwindcss-primeui": "^0.4.0",
-        "vue-router": "^4.5.0"
+        "tailwindcss-primeui": "^0.4.0"
     }
 }

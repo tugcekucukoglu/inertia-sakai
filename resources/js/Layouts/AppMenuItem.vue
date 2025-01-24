@@ -66,17 +66,9 @@ function itemClick(event, item) {
 }
 
 function checkActiveRoute(item) {
-    return route.path === item.to;
+    if (!item) return false;
+    return page.url === item.to;
 }
-
-const active = computed(() => {
-    return isActiveRoute(props.item.to);
-});
-
-const isActiveRoute = (route) => {
-    if (!route) return false;
-    return page.url.startsWith(route);
-};
 </script>
 
 <template>
@@ -87,7 +79,7 @@ const isActiveRoute = (route) => {
             <span class="layout-menuitem-text">{{ item.label }}</span>
             <i class="pi pi-fw pi-angle-down layout-submenu-toggler" v-if="item.items"></i>
         </a>
-        <Link v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" :class="[item.class, { 'active-route': isActiveRoute(item) }]" tabindex="0" :href="item.to">
+        <Link v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" :class="[item.class, { 'active-route': checkActiveRoute(item) }]" tabindex="0" :href="item.to">
             <i :class="item.icon" class="layout-menuitem-icon"></i>
             <span class="layout-menuitem-text">{{ item.label }}</span>
             <i class="pi pi-fw pi-angle-down layout-submenu-toggler" v-if="item.items"></i>
